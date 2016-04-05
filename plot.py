@@ -7,16 +7,12 @@ import rpy2.robjects as robj
 import rpy2.robjects.pandas2ri # for dataframe conversion
 from rpy2.robjects.packages import importr
 
-# First, make some random data
+## First, make some random data
 x = np.random.normal(loc = 5, scale = 2, size = 10)
 y = x + np.random.normal(loc = 0, scale = 2, size = 10)
 
-# Make these into a pandas dataframe. I do this because
-# more often than not, I read in a pandas dataframe, so this
-# shows how to use a pandas dataframe to plot in ggplot
+## Transform the data to a pandas dataframe.
 testData = pd.DataFrame( {'x':x, 'y':y} )
-# it looks just like a dataframe from R
-print(testData)
 
 ## Make an robject containing function that makes the plot.
 plotFunc = robj.r("""
@@ -55,4 +51,5 @@ function(df){
       }
 """)
 
+## Modify and run the function again with saving the file
 plotFunc_2(testData_R)
