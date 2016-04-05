@@ -53,18 +53,14 @@ gr.dev_off()
 
 # you can even save the output once you like it
 plotFunc_2 = robj.r("""
- library(ggplot2)
-
+library(ggplot2)
 function(df){
  p <- ggplot(df, aes(x, y)) +
  geom_point( ) +
  theme(
  panel.background = element_rect(fill = NA, color = 'black')
  )
-
-
-
-ggsave('rpy2_magic.pdf', plot = p, width = 6.5, height = 5.5)
+ ggsave('rpy2_magic.pdf', plot = p, width = 6.5, height = 5.5)
  }
 """)
 
