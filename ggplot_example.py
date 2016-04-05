@@ -12,6 +12,8 @@ y = x + np.random.normal(loc = 0, scale = 2, size = 10)
 ## Transform the data to a pandas dataframe
 testData = pd.DataFrame( {'x':x, 'y':y} )
 
+print(testData)
+
 ## Make an R-object containing function that makes the plot
 plotFunc = robj.r("""
 library(ggplot2)
@@ -21,7 +23,6 @@ function(df){
       print(p)
       }
 """)
-
 
 ## Import graphics devices
 gr = importr('grDevices')
