@@ -1,6 +1,4 @@
 ## Source: http://www.r-bloggers.com/ggplot2-in-python-a-major-barrier-broken/
-
-# Import the necessary modules
 import numpy as np
 import pandas as pd
 import rpy2.robjects as robj
