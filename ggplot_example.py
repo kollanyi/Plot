@@ -12,7 +12,7 @@ y = x + np.random.normal(loc = 0, scale = 2, size = 10)
 ## Transform the data to a pandas dataframe.
 testData = pd.DataFrame( {'x':x, 'y':y} )
 
-## Make an robject containing function that makes the plot.
+## Make an R-object containing function that makes the plot.
 plotFunc = robj.r("""
 library(ggplot2)
 
