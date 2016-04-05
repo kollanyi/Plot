@@ -23,16 +23,6 @@ function(df){
 """)
 
 
-## Add a title to the plot
-plotFunc_2 = robj.r("""
-library(ggplot2)
-function(df){
-      p <- ggplot(df, aes(x, y)) + geom_point()
-      p + ggtitle("Test plot\nwith test data")
-      print(p)
-      }
-""")
-
 ## Import graphics devices
 gr = importr('grDevices')
 
@@ -41,7 +31,7 @@ robj.pandas2ri.activate()
 testData_R = robj.conversion.py2ri(testData)
 
 ## Run the plot function on the dataframe
-plotFunc_2(testData_R)
+plotFunc(testData_R)
 
 ## This requires you to press enter, otherwise the plot window closes
 raw_input()
@@ -50,7 +40,7 @@ raw_input()
 gr.dev_off()
 
 ## Save the output in a pdf
-plotFunc_3 = robj.r("""
+plotFunc_2 = robj.r("""
 library(ggplot2)
 
 function(df){
@@ -61,4 +51,4 @@ function(df){
 """)
 
 ## Modify and run the function again with saving the file
-plotFunc_3(testData_R)
+plotFunc_2(testData_R)
