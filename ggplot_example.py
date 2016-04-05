@@ -25,7 +25,12 @@ function(df){
 
 ## Add a title to the plot
 plotFunc_2 = robj.r("""
-p + ggtitle("Test plot\nwith test data")
+library(ggplot2)
+function(df){
+      p <- ggplot(df, aes(x, y)) + geom_point()
+      p + ggtitle("Test plot\nwith test data")
+      print(p)
+      }
 """)
 
 ## Import graphics devices
