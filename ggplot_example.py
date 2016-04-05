@@ -9,10 +9,10 @@ from rpy2.robjects.packages import importr
 x = np.random.normal(loc = 5, scale = 2, size = 10)
 y = x + np.random.normal(loc = 0, scale = 2, size = 10)
 
-## Transform the data to a pandas dataframe.
+## Transform the data to a pandas dataframe
 testData = pd.DataFrame( {'x':x, 'y':y} )
 
-## Make an R-object containing function that makes the plot.
+## Make an R-object containing function that makes the plot
 plotFunc = robj.r("""
 library(ggplot2)
 
@@ -22,7 +22,13 @@ function(df){
       }
 """)
 
-## Import graphics devices.
+
+## Add a title to the plot
+plotFunc_2 = robj.r("""
+p + ggtitle("Test plot\nwith test data")
+""")
+
+## Import graphics devices
 gr = importr('grDevices')
 
 ## Convert the testData to an R dataframe
@@ -30,7 +36,7 @@ robj.pandas2ri.activate()
 testData_R = robj.conversion.py2ri(testData)
 
 ## Run the plot function on the dataframe
-plotFunc(testData_R)
+plotFunc_2(testData_R)
 
 ## This requires you to press enter, otherwise the plot window closes
 raw_input()
@@ -39,7 +45,7 @@ raw_input()
 gr.dev_off()
 
 ## Save the output in a pdf
-plotFunc_2 = robj.r("""
+plotFunc_3 = robj.r("""
 library(ggplot2)
 
 function(df){
@@ -50,4 +56,4 @@ function(df){
 """)
 
 ## Modify and run the function again with saving the file
-plotFunc_2(testData_R)
+plotFunc_3(testData_R)
