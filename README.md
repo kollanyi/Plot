@@ -1,3 +1,3 @@
-# Tutorial
+# Readme
 
-This is my tutorial repository.
+This is my plot repository.
